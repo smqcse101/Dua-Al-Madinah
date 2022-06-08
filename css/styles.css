@@ -109,6 +109,10 @@ p{
   transition: .2s;
   transform: scale(1.15);
 }
+.form-control .tokenverify{
+  margin-top: 30%;
+  margin-bottom: 20%;
+}
 #cities .carousel .carousel-cell{
   position: relative;
 }
