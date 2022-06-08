@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Dua Al-Madinah</title>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="images/DuaAlmadinah.jpg" alt="" width="50" class="d-inline-block">
+        Dua Al-Madinah
+      </a>
+
+      <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto our-nav">
+
+          <a class="nav-link bold-text" href="/Bookings">My Booking</a>
+          <a class="nav-link bold-text" href="/admin">Admin</a>
+          <a class="btn btn-light btn-md btn-dark" href="/logout" role="button">Log-Out</a>
+
+
+        </div>
+        <!-- <% if(dp===" "){%>
+        <img class="dp" src="images/profile.png" alt="Your DP" >
+        <% } else { %>
+        <img src="<%=dp%>" alt="Your DP" class="dp" >
+        <% } %> -->
+      </div>
+    </div>
+  </nav>
+  <section id="top-cont" class="row">
+    <video src="videos/video.mp4" autoplay muted loop class="col-lg-7 col-md-8  left-vid" style="padding:0px;">
+    </video>
+    <div class="col-lg-5 col-md-4 ">
+      <h3 class="right-quote "> <b>"</b>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure<b>"</b>
+      </h3>
+    </div>
+  </section>
+
+  <section id="cities">
+    <h1 class=" heading">Select City</h1>
+    <div class="carousel" data-flickity='{ "contain": true }'>
+      <%cityDetailsLists.forEach(function(cityDetailsList){%>
+        <div class="carousel-cell">
+          <form class="" action="/common" method="post">
+            <input type = "hidden" name = "city_name" value = "<%=cityDetailsList.cityName%>" />
+            <button  class="city-image" type="submit"  class="btn btn primary"><img class="city-image" src="/uploads/<%=cityDetailsList.cityImage%>"></button>
+          </form>
+          <h3><%=cityDetailsList.cityName%></h3>
+        </div>
+      <%})%>
+    </div>
+  </section>
+
+  <section id="services">
+    <h1 class="service-heading heading">Our Services</h1>
+    <div class="ser">
+      <div class="row">
+        <img src="images/service1.jpg" alt="" class="ser-img col-lg-4">
+        <div class="col-lg-8 ">
+          <h3 class="service-name">service name</h3>
+          <p class="ser-description">orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrudorem ipsum dolor
+            sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+        </div>
+      </div>
+    </div>
+    <div class="divider">
+
+    </div>
+    <div class="ser">
+      <div class="row">
+        <div class="col-lg-8 ">
+          <h3 class="service-name">service name</h3>
+          <p class="ser-description">orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrudorem ipsum dolor
+            sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+        </div>
+        <img src="images/service2.jpg" alt="" class="ser-img col-lg-4">
+      </div>
+    </div>
+    <div class="divider">
+
+    </div>
+    <div class="ser">
+      <div class="row">
+        <img src="images/service3.jpg" alt="" class="ser-img col-lg-4">
+        <div class="col-lg-8 ">
+          <h3 class="service-name">service name</h3>
+          <p class="ser-description">orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrudorem ipsum dolor
+            sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="wrapper">
+      <h1 class="heading">Testimonial</h1>
+      <div class="team">
+        <%testimonials.forEach(function(singletestimonial){%>
+          <div class="team_member">
+            <div class="team_img">
+              <img src="<%=singletestimonial.dp%>" style="border-radius:50%">
+            </div>
+            <h3><%=singletestimonial.name%></h3>
+
+            <p><%=singletestimonial.review%></p>
+          </div>
+
+
+          <%})%>
+
+
+        <!-- <div class="team_member">
+          <div class="team_img">
+            <img src="images/dp2.png" alt="Team_image">
+          </div>
+          <h3>Rosie Meg</h3>
+          <p class="role">Tester</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quaerat tempora, voluptatum quas facere dolorum aut cumque nihil nulla harum nemo distinctio quam blanditiis dignissimos.</p>
+        </div>
+        <div class="team_member">
+          <div class="team_img">
+            <img src="images/dp3.png" alt="Team_image">
+          </div>
+          <h3>Alex Wood</h3>
+          <p class="role">Support Lead</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quaerat tempora, voluptatum quas facere dolorum aut cumque nihil nulla harum nemo distinctio quam blanditiis dignissimos.</p>
+        </div> -->
+      </div>
+    </div>
+
+  </section>
+
+
+    <footer>
+
+        <div class="container">
+          <ul class="flex-row">
+
+            <li><a href="/aboutus">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="/contactUs">Contact Us</a></li>
+          </ul>
+          <ul class="flex-row">
+
+
+            <li>
+              <i class="fab fa-instagram"></i>
+            </li>
+            <li>
+              <i class="fab fa-facebook"></i>
+            </li>
+
+          </ul>
+          <p>&copy;2022Dua-Al Madinah</p>
+        </div>
+      </footer>
+
+
+  <script src="cityname.js">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+  </script>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+</body>
+
+</html>

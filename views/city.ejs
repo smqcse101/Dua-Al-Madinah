@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/styles.css">
+  <title><%=selectedCity[0].cityName%></title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="images/DuaAlmadinah.jpg" alt="" width="50" class="d-inline-block">
+        Dua Al-Madinah
+      </a>
+
+      <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto our-nav">
+          <a class="nav-link bold-text" aria-current="page" href="/entry">Home</a>
+          <a class="nav-link bold-text" href="/Bookings">My Booking</a>
+          <a class="btn btn-light btn-md btn-dark" href="/logout" role="button">Log-Out</a>
+
+
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section id="about-city">
+    <h1 class="heading">About <%=selectedCity[0].cityName%></h1>
+    <div  id="map" style="width:auto ;height:450px;"></div>
+    <div class="row" >
+      <div class="col-lg-6 col-md-6" style="background-color:#FEFBE7 ; border: 2px solid #446A46 ">
+        <h2>Latest Announcements</h2>
+            <ul>
+              <%selectedCity[0].latestAnnouncments.forEach(function(latestAnnouncment){%>
+              <li><%=latestAnnouncment%></li>
+              <%})%>
+            </ul>
+
+      </div>
+      <div class="col-lg-6 col-md-6" style="background-color:#FEFBE7; border: 2px solid #446A46">
+
+          <div class="row">
+            <div class="col-sm-4">
+              <img src="<%=image_url%>" alt="">
+              <h5><%=description%></h5>
+            </div>
+            <div class="col-sm-8">
+              <h3 style="margin-top:30px;"><%=temperature%>°C</h3>
+              <h4><%=day%> <i class="fas fa-calendar-week"></i></h4>
+
+            </div>
+          </div>
+
+
+
+
+
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+  </section>
+
+  <section id="about-city-content">
+    <div class="row">
+      <div class="clo-lg-12">
+        <h5>"<%=selectedCity[0].cityDescription%>."</h5>
+
+      </div>
+
+    </div>
+  </section>
+  <section id="places-to-visit">
+    <h1 class="heading" style="margin-bottom:60px;">Places To visit</h1>
+    <div class="row">
+      <div class="col-lg-6">
+        <img class="visit-image" src="/uploads/<%=selectedCity[0].tourImage1%>" alt="">
+      </div>
+      <div class="col-lg-6 visit-info-holder">
+        <h3><%=selectedCity[0].tourplace1%></h3>
+        <p class="visit-info"><%=selectedCity[0].tourDescription1%>.</p>
+      </div>
+
+    </div>
+    <br><br>
+    <div class="row">
+      <div class="col-lg-6">
+        <img class="visit-image" src="/uploads/<%=selectedCity[0].tourImage2%>" alt="">
+      </div>
+      <div class="col-lg-6 visit-info-holder">
+        <h3><%=selectedCity[0].tourplace2%></h3>
+        <p class="visit-info"><%=selectedCity[0].tourDescription2%>.</p>
+      </div>
+
+    </div>
+    <br><br>
+    <div class="row">
+      <div class="col-lg-6">
+        <img class="visit-image" src="/uploads/<%=selectedCity[0].tourImage3%>" alt="">
+      </div>
+      <div class="col-lg-6 visit-info-holder">
+        <h3><%=selectedCity[0].tourplace3%></h3>
+        <p class="visit-info"><%=selectedCity[0].tourDescription3%>.</p>
+      </div>
+
+    </div>
+    <br><br>
+  </section>
+  <section id="packages">
+    <h1 class="heading">Select Package</h1>
+    <div class="container d-flex align-items-center justify-content-center flex-wrap">
+      <%package.forEach(function(packageDetail,index){%>
+      <form class="" action="/selected-package" method="post">
+        <div class="box">
+          <div class="body">
+            <div class="imgContainer">
+              <img src="/uploads/<%=packageDetail.packageImg%>">
+            </div>
+            <div class="content d-flex flex-column align-items-center justify-content-center">
+              <div>
+                <h2 class="text-white fs-5"><%=selectedCity[0].cityName%> Package <%=index+1%> </h2>
+                <ul>
+                  <li>Package Name:<%=packageDetail.packageName%></li>
+                  <li>Days:<%=packageDetail.packageDays%></li>
+                  <li>Pacakge Price:<%=packageDetail.packagePrice%></li>
+                  <li>Package Type:<%=packageDetail.packageType%></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" style="margin:2%; " class="btn btn-dark" name="SelectedPackage" value="<%=packageDetail.packageName%>"> Select</button>
+      </form>
+      <%})%>
+
+
+    </div>
+
+  </section>
+  <footer>
+    <div class="container">
+      <ul class="flex-row">
+
+        <li><a href="/aboutus">About Us</a></li>
+        <li><a href="/contactUs">Contact Us</a></li>
+      </ul>
+      <ul class="flex-row">
+
+
+        <li>
+          <i class="fab fa-instagram"></i>
+        </li>
+        <li>
+          <i class="fab fa-facebook"></i>
+        </li>
+
+      </ul>
+      <p>&copy;2022Dua-Al Madinah</p>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+    // Initialize and add the map
+    function initMap() {
+      const uluru = {
+        lat: <%=x%>,
+        lng: <%=y%>,
+      };
+      console.log(uluru);
+
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 12,
+        center: uluru,
+
+      });
+
+      const marker = new google.maps.Marker({
+        position: uluru,
+        map: map,
+
+
+      });
+    }
+
+    window.initMap = initMap;
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOHRg-0PvpzKWq0TqpGqSPVGuI7SF_578&callback=initMap&v=weekly"></script>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+
+</html>

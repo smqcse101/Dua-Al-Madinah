@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Enter Token</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div class="user-page">
+    <% if (Status === "Tour Confirmed") { %>
+      <div class="centerbox">
+        <h1 class="conformation-msg">Your Tour is Confirmed</h1>
+        <form class="" action="/downloadReceipt" method="post">
+          <button type="submit" class="btn btn-lg btn-outline-dark bttn">Download PDF and make payment</button>
+        </form>
+        <form class="" action="takeReview" method="post">
+          <div class="" style="padding:10% 30%">
+            <label for="review" class="form-label headings" style="font-size:24px">Write Your review here !!</label>
+            <textarea type="text" class="form-control" name="userReview" value="" id="review" cols="80" style="margin-bottom:5%"></textarea>
+            <button type="submit" name="button" class="btn btn-outline-dark bttn">Submit</button>
+          </div>
+
+        </form>
+
+      </div>
+
+    <% } %>
+
+    <% if(Status ==="Under Processing" ){ %>
+
+    <h1>Your Request Is Under Processing</h1>
+
+    <% } %>
+
+    <% if(Status ==="On-Hold By Customer" ){ %>
+
+    <h1>Request is On Hold By The Customer</h1>
+
+    <% } %>
+
+    <% if(Status ==="On-Hold By Office" ){ %>
+
+    <h1>Request is On Hold By The Office</h1>
+
+    <% } %>
+
+    <% if(Status ==="Tour Cancelled" ){ %>
+
+    <h1>Your Request Is Cancelled</h1>
+
+    <% } %>
+
+
+  </div>
+
+
+
+
+</body>
+
+</html>
