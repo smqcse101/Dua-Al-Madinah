@@ -559,3 +559,22 @@ footer p{
 textarea{
   resize: none;
 }
+.container{
+  margin-left:1%;
+  margin-right:1%;
+
+}
+.navbar{
+  padding:0;
+
+
+}
+nav .container-fluid{
+  background-color: #36B5B0;
+}
+.nav-link{
+  font-size: 22px;
+}
+.navbar-brand{
+  font-size: 24px;
+}
