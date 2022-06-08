@@ -530,6 +530,10 @@ footer p{
   color: #36B5B0;
   font-size: 40px;
   font-weight: bold;
+  background-color: white;
+  margin-bottom: 0px;
+  text-align: center;
+  padding-top: 3%;
 }
 #AboutUsHeading{
     background-color: white;
