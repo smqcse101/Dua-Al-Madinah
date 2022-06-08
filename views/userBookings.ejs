@@ -8,24 +8,28 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body>
-  <div class="user-page">
+<body id="userBookings">
+  <div>
     <% if (Status === "Tour Confirmed") { %>
-      <div class="centerbox">
-        <h1 class="conformation-msg">Your Tour is Confirmed</h1>
+    <div class="row">
+      <div class="col-lg-6 make-them-incentre">
+        <h1>Your Tour is Confirmed</h1>
         <form class="" action="/downloadReceipt" method="post">
           <button type="submit" class="btn btn-lg btn-outline-dark bttn">Download PDF and make payment</button>
         </form>
+      </div>
+      <div class="col-lg-6  make-them-incentre">
         <form class="" action="takeReview" method="post">
-          <div class="" style="padding:10% 30%">
-            <label for="review" class="form-label headings" style="font-size:24px">Write Your review here !!</label>
-            <textarea type="text" class="form-control" name="userReview" value="" id="review" cols="80" style="margin-bottom:5%"></textarea>
+          <div class="">
+            <h1>Write Your Review Here!!!</h1>
+            <textarea type="text" class="form-control" name="userReview" value="" id="review" cols="80" rows="5"></textarea>
             <button type="submit" name="button" class="btn btn-outline-dark bttn">Submit</button>
           </div>
 
         </form>
-
       </div>
+    </div>
+
 
     <% } %>
 

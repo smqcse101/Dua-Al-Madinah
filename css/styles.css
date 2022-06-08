@@ -109,10 +109,11 @@ p{
   transition: .2s;
   transform: scale(1.15);
 }
-.form-control .tokenverify{
-  margin-top: 30%;
-  margin-bottom: 20%;
+
+.tokenverify{
+  margin: 5% 3%;
 }
+
 #cities .carousel .carousel-cell{
   position: relative;
 }
@@ -337,6 +338,9 @@ p{
 .visit-info{
   color: grey;
 }
+.headings{
+  margin-bottom: 7%;
+}
 
 element.style {
 }
@@ -404,8 +408,13 @@ a:hover {
   background-color:#DEEDF0;
   padding: 2%;
 }
-#Token_verify{
-  padding-top: 4%;
+
+.tokenverifybody{
+  padding:  6% 3%;
+  background-color:#DEEDF0;
+}
+#userBookings{
+
   background-color:#DEEDF0;
 }
 #packages{
@@ -452,13 +461,10 @@ a:hover {
   color: red;
 }
 .centerbox{
-  text-align:center;
+  text-align:left;
   margin: auto;
-  padding: 10%;
-}
-.conformation-msg{
-  margin:3%;
-}
+  }
+
 .copyButton{
   margin-left: 47%;
 }
@@ -536,4 +542,20 @@ footer p{
     background-color: white;
     padding-left: 7%;
     padding-right: 7%;
+}
+
+.make-them-incentre{
+  padding: 10%;
+  margin: auto;
+}
+.make-them-incentre h1{
+ margin-bottom: 7%;
+
+}
+.make-them-incentre button{
+ margin-top: 15%;
+
+}
+textarea{
+  resize: none;
 }
