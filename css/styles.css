@@ -582,3 +582,13 @@ nav .container-fluid{
 .navbar-brand{
   font-size: 24px;
 }
+
+.text-uppercase:hover {
+  color: black;
+}
+.see-more{
+  color:#1363DF;
+}
+.see-more:hover {
+  color: blue;
+}
