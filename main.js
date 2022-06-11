@@ -91,8 +91,8 @@ passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
 
-    callbackURL: "https://hidden-mesa-15600.herokuapp.com/auth/google/login",
-    // callbackURL: "http://localhost:3000/auth/google/login",
+    // callbackURL: "https://hidden-mesa-15600.herokuapp.com/auth/google/login",
+    callbackURL: "http://localhost:3000/auth/google/login",
     userProfileUrl:"https://www.googleapis.com/oauth2/v3/userinfo"
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -323,7 +323,8 @@ app.get("/city", function(req,res){
 
 })
 app.get("/admin", function(req,res){
-  res.render("Admin.ejs")
+  res.sendFile(__dirname+"/adminLogin.html");
+  // res.render("Admin.ejs")
 })
 app.get("/request",function(req,res){
 
@@ -532,7 +533,14 @@ app.get("/popupDeletePackage",function(req,res){
 
 })
 
-
+app.post("/adminlogin",function(req,res){
+  if((req.body.adminUsername==process.env.USER_NAME)&&(req.body.adminPassword==process.env.PASS_WORD)){
+    res.render("Admin.ejs")
+  }
+  else{
+    console.log("unauthentication access");
+  }
+});
 app.post("/delete-package",function(req,res){
   Package.deleteOne({packageid:req.body.todeletePackageID},function(err){
     if(err){
@@ -542,13 +550,6 @@ app.post("/delete-package",function(req,res){
   res.redirect("/popupDeletePackage");
 
 })
-
-
-
-
-
-
-
 app.post("/register",function(req,res){
   User.register({username:req.body.username},req.body.password, function(err,user){
 
@@ -601,7 +602,6 @@ app.post("/selected-package",function(req,res){
   selectedPackage=req.body.SelectedPackage;
   res.redirect("/details");
 })
-
 
 
 app.post("/userToken", function(req,res){
@@ -688,10 +688,8 @@ app.post("/download",function(req,res){
 
     })
   })
+
 app.post("/takeReview",function(req,res){
-
-
-
   finalreview= new UserReviews({
     review:req.body.userReview,
     dp:profilephoto,
@@ -699,7 +697,4 @@ app.post("/takeReview",function(req,res){
   })
   finalreview.save();
   res.redirect("/entry")
-
-
-
 })
