@@ -47,11 +47,20 @@ p{
 
 .right-quote{
   font-size: 180%;
- text-align: center;
+ text-align: left;
  margin: auto;
  line-height: 2;
  color:grey;
 }
+h3.right-quote {
+  font-size: 220%;
+ text-align: center;
+ margin: auto;
+ line-height: 2;
+ color:black;
+}
+
+
 .left-vid{
   border-radius: 30px;
   overflow: hidden;
@@ -450,7 +459,7 @@ a:hover {
 }
 
 .payment-centre{
-  padding-top: 200px;
+  padding-top: 80px;
   text-align: center;
 }
 .log-out{
@@ -459,6 +468,7 @@ a:hover {
 .reference-no{
   text-align: center;
   color: red;
+  margin-bottom: 110px;
 }
 .centerbox{
   text-align:left;
@@ -591,4 +601,7 @@ nav .container-fluid{
 }
 .see-more:hover {
   color: blue;
+}
+.gmail:hover{
+  color: black;
 }

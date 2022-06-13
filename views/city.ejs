@@ -52,17 +52,15 @@
     <h1 class="heading">About <%=selectedCity[0].cityName%></h1>
     <div  id="map" style="width:auto ;height:450px;"></div>
     <div class="row" >
-      <div class="col-lg-6 col-md-6" style="background-color:#FEFBE7 ; border: 2px solid #446A46 ">
+      <div class="col-lg-6 col-md-6" style="background-color:#A1E3D8 ; border: 2px solid #446A46 ">
         <h2>Latest Announcements</h2>
             <ul>
               <%selectedCity[0].latestAnnouncments.forEach(function(latestAnnouncment){%>
               <li><%=latestAnnouncment%></li>
               <%})%>
             </ul>
-
       </div>
-      <div class="col-lg-6 col-md-6" style="background-color:#FEFBE7; border: 2px solid #446A46">
-
+      <div class="col-lg-6 col-md-6" style="background-color:#A1E3D8 ; border: 2px solid #446A46">
           <div class="row">
             <div class="col-sm-4">
               <img src="<%=image_url%>" alt="">
@@ -71,37 +69,17 @@
             <div class="col-sm-8">
               <h3 style="margin-top:30px;"><%=temperature%>°C</h3>
               <h4><%=day%> <i class="fas fa-calendar-week"></i></h4>
-
             </div>
           </div>
-
-
-
-
-
       </div>
-
     </div>
-
-
-
-
-
-
-
-
-
-
-
   </section>
 
   <section id="about-city-content">
     <div class="row">
       <div class="clo-lg-12">
         <h5>"<%=selectedCity[0].cityDescription%>."</h5>
-
       </div>
-
     </div>
   </section>
   <section id="places-to-visit">
@@ -114,7 +92,6 @@
         <h3><%=selectedCity[0].tourplace1%></h3>
         <p class="visit-info"><%=selectedCity[0].tourDescription1%>.</p>
       </div>
-
     </div>
     <br><br>
     <div class="row">
@@ -125,7 +102,6 @@
         <h3><%=selectedCity[0].tourplace2%></h3>
         <p class="visit-info"><%=selectedCity[0].tourDescription2%>.</p>
       </div>
-
     </div>
     <br><br>
     <div class="row">
@@ -136,7 +112,6 @@
         <h3><%=selectedCity[0].tourplace3%></h3>
         <p class="visit-info"><%=selectedCity[0].tourDescription3%>.</p>
       </div>
-
     </div>
     <br><br>
   </section>
@@ -166,61 +141,27 @@
         <button type="submit" style="margin:2%; " class="btn btn-dark" name="SelectedPackage" value="<%=packageDetail.packageName%>"> Select</button>
       </form>
       <%})%>
-
-
     </div>
-
   </section>
   <footer style="text-align:center;">
     <div >
-
-
-
-
-
           <div class="row mt-4">
-
             <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
               <a href="/aboutus"><h3 class="text-uppercase mb-4">About Us</h3></a>
-
-
-
                 “Duaa al Madinah ." Is founded in 2020, started by very young personalities to dedicate their
                 life spending time on doing assistance...<a href="/aboutus"><span class="see-more">see more</span> </a>
-
-
-
               <div class="mt-4">
-
                 <a type="button" class="btn btn-floating btn-warning btn-lg btn-dark"><i class="fab fa-facebook-f"></i></a>
-
-
-
                 <a type="button" class="btn btn-floating btn-warning btn-lg btn-dark"><i class="fab fa-instagram"></i></a>
-
                 <a type="button" class="btn btn-floating btn-warning btn-lg btn-dark"><i class="fab fa-google-plus-g"></i></a>
-                <!-- Linkedin -->
               </div>
             </div>
-
             <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
               <h3>Resources</h3>
-
-
                   <h6>Blogs</h6>
-
-
                   <h6>FAQs</h6>
-
-
                   <h6>Our Works</h6>
-
-
-
-
-
             </div>
-
             <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
               <a href="/contactUs"><h3 class="text-uppercase mb-4">Contact Us</h3></a>
               <ul class="fa-ul" style="margin-left: 1.65em; text-align:left;" >
@@ -228,17 +169,13 @@
                   <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-1">  King Fahad street Al Masaniah District 3228 Madinah Al Munawarah KSA</span>
                 </li>
                 <li class="mb-3">
-                  <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-1">duaalmadinah2022@gmail.com</span>
+                    <a href="/contactUs"><span class="fa-li"><i class="fas fa-envelope gmail"></i></span><span class="ms-1 gmail">duaalmadinah2022@gmail.com</span></a>
                 </li>
                 <li class="mb-3">
                   <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-1">+91 98749563264</span>
                 </li>
-
               </ul>
-
-
             </div>
-
           </div>
 
 

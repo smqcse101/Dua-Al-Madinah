@@ -19,7 +19,6 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
     <div class="container-fluid">
       <a class="navbar-brand" href="/entry">
         <img src="images/DuaAlmadinah.jpg" alt="" width="50">
@@ -36,13 +35,8 @@
           <li class="nav-item ">
             <a class="nav-link bold-text" href="/admin">Admin</a>
           </li>
-
-
         </ul>
-
-
-        <a class="btn btn-light btn-md btn-dark" href="/logout" role="button">Log-Out</a>
-
+    <a class="btn btn-light btn-md btn-dark" href="/logout" role="button">Log-Out</a>
       </div>
     </div>
   </nav>
@@ -67,32 +61,22 @@
         </form>
       </div>
     </div>
-
-
     <% } %>
 
     <% if(Status ==="Under Processing" ){ %>
-
-    <h1>Your Request Is Under Processing</h1>
-
+    <h1 style="text-align:center; margin-top:10%;">Your Request Is Under Processing</h1>
     <% } %>
 
     <% if(Status ==="On-Hold By Customer" ){ %>
-
-    <h1>Request is On Hold By The Customer</h1>
-
+    <h1 style="text-align:center; margin-top:10%;">Request is On Hold By The Customer</h1>
     <% } %>
 
     <% if(Status ==="On-Hold By Office" ){ %>
-
-    <h1>Request is On Hold By The Office</h1>
-
+    <h1 style="text-align:center; margin-top:10%;">Request is On Hold By The Office</h1>
     <% } %>
 
     <% if(Status ==="Tour Cancelled" ){ %>
-
-    <h1>Your Request Is Cancelled</h1>
-
+    <h1 style="text-align:center; margin-top:10%;">Your Request Is Cancelled</h1>
     <% } %>
 
 

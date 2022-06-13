@@ -91,8 +91,8 @@ passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
 
-    callbackURL: "https://hidden-mesa-15600.herokuapp.com/auth/google/login",
-    // callbackURL: "http://localhost:3000/auth/google/login",
+    // callbackURL: "https://hidden-mesa-15600.herokuapp.com/auth/google/login",
+    callbackURL: "http://localhost:3000/auth/google/login",
     userProfileUrl:"https://www.googleapis.com/oauth2/v3/userinfo"
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -171,6 +171,7 @@ const formSchema = new mongoose.Schema({
   vcode: String,
   file:String,
   Status:String,
+  tokenNumber:String,
 });
 const Form= mongoose.model("Form", formSchema);
 
@@ -244,6 +245,7 @@ app.post("/token" ,upload.single("ScannedCopies"),function(req, res){
     vcode: req.body.vcode,
     file:req.file.filename,
     Status:"Under Processing",
+    tokenNumber:randomtoken,
   });
   new_form.save();
    const initial_data = new BookedDetails({
@@ -322,9 +324,12 @@ app.get("/city", function(req,res){
 
 
 })
+app.get("/adminHome",function(req,res){
+  res.render("Admin.ejs");
+
+})
 app.get("/admin", function(req,res){
   res.sendFile(__dirname+"/adminLogin.html");
-  // res.render("Admin.ejs")
 })
 app.get("/request",function(req,res){
 
@@ -355,42 +360,60 @@ app.get("/auth/google",
 );
 
 app.post("/bookedForYouDetails",function(req,res){
-  user_status=req.body.status;
-  user_email=req.body.emailid;
-  BookedDetails.updateOne({emailId:req.body.emailid},{$set:{
-    status:req.body.status,
-    city:req.body.city,
-    package:req.body.package,
-    airlines:req.body.flightName,
-    origin:req.body.Origin,
-    flightDepartureDate:req.body.flightDepartureDate,
-    flightDepartureTime:req.body.flightDepartureTime,
-    flightArrivalDate:req.body.flightArrivalDate,
-    flightArrivalTime:req.body.flightArrivalTime,
-    PNRnumber:req.body.pnr,
-    ticketnumber:req.body.ticketNumber,
-    hotellocation:req.body.allotedHotelLocation,
-    hotelname:req.body.allotedHotelName,
-    Roomnumber:req.body.roomNumber,
-    checkinDate:req.body.checkInDate,
-    checkoutdate:req.body.checkOutDate,}}).then(result => {
-    const { matchedCount, modifiedCount } = result;
+  if(req.body.status=="Tour Cancelled"){
+    BookedDetails.deleteOne({tokennumber:req.body.token},function(err){
+      if(err){
+        console.log(err);
+      }
+    })
+    Form.deleteOne({tokenNumber:req.body.token},function(err){
+      if(err){
+        console.log(err);
+      }
+    })
+    res.redirect("/request");
 
-  })
-  .catch(err => console.error(`Failed to add review: ${err}`));
+  }
+  else{
+    user_status=req.body.status;
+    user_email=req.body.emailid;
+    BookedDetails.updateOne({emailId:req.body.emailid},{$set:{
+      status:req.body.status,
+      city:req.body.city,
+      package:req.body.package,
+      airlines:req.body.flightName,
+      origin:req.body.Origin,
+      flightDepartureDate:req.body.flightDepartureDate,
+      flightDepartureTime:req.body.flightDepartureTime,
+      flightArrivalDate:req.body.flightArrivalDate,
+      flightArrivalTime:req.body.flightArrivalTime,
+      PNRnumber:req.body.pnr,
+      ticketnumber:req.body.ticketNumber,
+      hotellocation:req.body.allotedHotelLocation,
+      hotelname:req.body.allotedHotelName,
+      Roomnumber:req.body.roomNumber,
+      checkinDate:req.body.checkInDate,
+      checkoutdate:req.body.checkOutDate,}}).then(result => {
+      const { matchedCount, modifiedCount } = result;
+
+    })
+    .catch(err => console.error(`Failed to add review: ${err}`));
 
 
 
 
 
-  Form.updateOne({email:req.body.emailid},{$set:{
-    Status:req.body.status,}}).then(result => {
-    const { matchedCount, modifiedCount } = result;
+    Form.updateOne({email:req.body.emailid},{$set:{
+      Status:req.body.status,}}).then(result => {
+      const { matchedCount, modifiedCount } = result;
 
-  })
-  .catch(err => console.error(`Failed to add review: ${err}`));
+    })
+    .catch(err => console.error(`Failed to add review: ${err}`));
 
-res.redirect("/request");
+  res.redirect("/request");
+
+  }
+
 })
 
 app.get("/Bookings",function(req,res){
@@ -532,6 +555,7 @@ app.get("/popupDeletePackage",function(req,res){
   })
 
 })
+
 
 app.post("/adminlogin",function(req,res){
   if((req.body.adminUsername==process.env.USER_NAME)&&(req.body.adminPassword==process.env.PASS_WORD)){
