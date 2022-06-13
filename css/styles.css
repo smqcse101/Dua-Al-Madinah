@@ -137,6 +137,7 @@ h3.right-quote {
   transform: scale(1.15);
 } */
 #about-city-content  h5{
+  padding:3%;
   color: black;
 }
 
