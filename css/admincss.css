@@ -18,10 +18,28 @@ background: #219F94;
 position: fixed;
 top: 0;
 left: 0;
-width: 225px;
+width:250px;
 height: 100%;
-padding: 20px 0;
+padding: 10px 0;
 transition: all 0.5s ease;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 30px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey;
+  border-radius: 10px;
 }
 
 .wrap .sbar .profile{
@@ -37,6 +55,9 @@ border-radius: 50%;
 margin: 0 auto;
 }
 
+.sbar{
+  overflow-y: scroll;
+}
 .wrap .sbar .profile h3{
 color: #ffffff;
 margin: 10px 0 5px;
@@ -49,7 +70,7 @@ font-size: 14px;
 
 .wrap .sbar ul li a{
 display: block;
-padding: 13px 30px;
+padding: 13px 15px;
 border-bottom: 1px solid black;
 color: rgb(241, 237, 237);
 font-size: 16px;
@@ -107,11 +128,16 @@ color: #a2ecff;
 }
 
 .wrap .sec .cont{
+
 margin: 30px;
 background: #fff;
 padding: 50px;
 line-height: 28px;
 }
+
+
+
+
 
 body.active .wrap .sbar{
 left: -225px;

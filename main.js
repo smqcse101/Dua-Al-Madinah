@@ -41,6 +41,7 @@ var upload = multer({
 var profilephoto=" ";
 var user_dp=" ";
 var reviewname="";
+var entryEmail="";
 
 
 var selectedPackage;
@@ -62,6 +63,7 @@ mongoose.connect("mongodb+srv://MusQaddu:DuaAlmadinah123@dua-almadinah.w4uzp.mon
 
 
 const userSchema= new mongoose.Schema({
+  name:String,
   email:String,
   password:String,
   googleId:String
@@ -98,6 +100,7 @@ passport.use(new GoogleStrategy({
   function(accessToken, refreshToken, profile, cb) {
     profilephoto= profile.photos[0].value;
     reviewname=profile.displayName;
+    entryEmail=profile.id;
 
 
   User.findOrCreate({ googleId: profile.id,username: profile.displayName }, function (err, user) {
@@ -124,6 +127,7 @@ const reviewSchema= new mongoose.Schema({
 });
 const UserReviews = mongoose.model("UserReview", reviewSchema);
 const bookedDetailsSchema = new mongoose.Schema({
+  entry_email:String,
   name:String,
   package:String,
   city:String,
@@ -144,8 +148,11 @@ const bookedDetailsSchema = new mongoose.Schema({
   checkoutdate:String,
   origin:String,
 });
+
+
 const BookedDetails = mongoose.model("BookedDetails", bookedDetailsSchema);
 const formSchema = new mongoose.Schema({
+  entry_email:String,
   dp:String,
   city:String,
   package:String,
@@ -220,6 +227,7 @@ app.post("/token" ,upload.single("ScannedCopies"),function(req, res){
 
 
   const new_form= new Form ({
+    entry_email:entryEmail,
     is_local: req.body.flexRadioDefault,
     city:selectedCity,
     package:selectedPackage,
@@ -253,10 +261,11 @@ app.post("/token" ,upload.single("ScannedCopies"),function(req, res){
      tokennumber:randomtoken,
      emailId:req.body.email,
      status:"Under Processing",
+     entry_email:entryEmail,
    });
   initial_data.save();
 
-res.render("token",{tokenID:randomtoken});
+res.render("token",{tokenID:randomtoken,name:reviewname});
 
 
 })
@@ -316,6 +325,7 @@ app.get("/city", function(req,res){
         description: description,
         image_url:image_url,
         package:packageDetails,
+        name:reviewname,
         x:xcoordinate,
         y:ycoordinate,
       })
@@ -346,6 +356,152 @@ app.get("/createCity",function(req,res){
   res.render('createCity',{success:""})
 
 })
+
+
+app.get("/queryRequest",function(req,res){
+
+  CityDetails.find({},function(err,cityDetails){
+    res.render('queryRequest',{
+      cityDetailsLists:cityDetails,
+      booking_details:"",
+
+    })
+  })
+
+})
+
+app.post("/queryRequest",function(req,res){
+
+  console.log(req.body.selectCity);
+  console.log(req.body.status);
+  console.log(req.body.start_date);
+  console.log(req.body.end_date);
+
+  // here i have to write code for selected time duration
+  Form.find({city:req.body.selectCity, status:req.body.status}, function(err,form){
+    CityDetails.find({},function(err,cityDetails){
+      res.render('queryRequest',{
+        cityDetailsLists:cityDetails,
+        booking_details:form
+
+      })
+    })
+  })
+})
+
+
+// app.get("/underProcessing",function(req,res){
+//   res.render('underProcessing')
+//
+// })
+// app.get("/onHoldCustomer",function(req,res){
+//   res.render('onHoldCustomer')
+//
+// })
+//
+// app.get("/onHoldTourist",function(req,res){
+//   res.render('onHoldTourist')
+//
+// })
+//
+// app.get("/cancelledRequests",function(req,res){
+//   res.render('cancelledRequests')
+//
+// })
+app.get("/report1",function(req,res){
+  res.render('report1')
+
+})
+app.get("/report2",function(req,res){
+  res.render('report2')
+
+})
+app.get("/report3",function(req,res){
+  res.render('report3')
+
+})
+app.get("/report4",function(req,res){
+  res.render('report4')
+
+})
+app.get("/report5",function(req,res){
+  res.render('report5')
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.get("/createPackage",function(req,res){
   CityDetails.find({},function(err,cityDetails){
     res.render('create_package',{
@@ -418,7 +574,19 @@ app.post("/bookedForYouDetails",function(req,res){
 
 app.get("/Bookings",function(req,res){
 
- res.sendFile(__dirname+"/tokenverify.html");
+  Form.find({entry_email:entryEmail},function(err,founduser){
+    res.render("tokenverify",{
+      usersList:founduser,
+      name:reviewname,
+    })
+
+
+  })
+
+
+
+
+ // res.sendFile(__dirname+"/tokenverify.html");
 })
 app.get('/auth/google/login',
   passport.authenticate('google', { failureRedirect: '/login' }),function(req,res){
@@ -435,6 +603,8 @@ app.get("/entry",function(req, res) {
       res.render('index',{
         cityDetailsLists:cityDetails,
         dp:profilephoto,
+        name:reviewname,
+
         testimonials:rev
       });
     });
@@ -444,7 +614,9 @@ app.get("/entry",function(req, res) {
 
 })
 app.get("/details",function(req,res){
-  res.sendFile(__dirname+"/details.html");
+  res.render("details",{
+    name:reviewname
+  });
 })
 app.get("/deleteCity",function(req,res){
   CityDetails.find({},function(err,cityDetails){
@@ -463,10 +635,15 @@ app.get("/logout",function(req,res){
   res.redirect("/");
 });
 app.get("/contactUs",function(req,res){
-  res.sendFile(__dirname+"/contactUs.html");
+  res.render("contactUs" ,{
+    name:reviewname,
+  })
+  // res.sendFile(__dirname+"/contactUs.html");
 })
 app.get("/aboutus",function(req,res){
-  res.sendFile(__dirname+"/AboutUs.html");
+  res.render("AboutUs",{
+    name:reviewname,
+  });
 })
 app.post("/common", function(req,res){
  selectedCity=req.body.city_name;
@@ -574,33 +751,45 @@ app.post("/delete-package",function(req,res){
   res.redirect("/popupDeletePackage");
 
 })
+
+
 app.post("/register",function(req,res){
-  User.register({username:req.body.username},req.body.password, function(err,user){
+  reviewname=req.body.name;
+  entryEmail=req.body.username;
+  console.log("assalamualikum");
+  User.register({username:req.body.username,name:req.body.name},req.body.password, function(err,user){
 
-    if(err){console.log(err);res.render("register");}
-    else{passport.authenticate("local")(req,res ,function(){
-      CityDetails.find({},function(err,cityDetails){
-        UserReviews.find({},function(error,rev){
-          console.log(rev);
-          console.log("why not this working");
-          res.render('index',{
-            cityDetailsLists:cityDetails,
-            dp:profilephoto,
-            testimonials:rev
+    if(err){
+      console.log("haggu");
+      console.log(err);
+    }
+    else{
+      console.log("walekumsalam");
+      passport.authenticate("local")(req,res ,function(){
+        CityDetails.find({},function(err,cityDetails){
+          UserReviews.find({},function(error,rev){
+            res.render('index',{
+              cityDetailsLists:cityDetails,
+              testimonials:rev,
+              name:reviewname,
+            });
           });
-        });
 
-      });
+        });
     })}
   })
 
+
+
 });
 app.post("/login",function(req,res){
+  entryEmail=req.body.username;
   const user = new User({
     username:req.body.username,
     password:req.body.password
   });
   req.login(user,function(err){
+
     if(err){
       console.log(err);
     }
@@ -608,13 +797,14 @@ app.post("/login",function(req,res){
       passport.authenticate("local")(req,res ,function(){
         CityDetails.find({},function(err,cityDetails){
           UserReviews.find({},function(error,rev){
-            console.log(rev);
-            console.log("why not this working");
-            res.render('index',{
-              cityDetailsLists:cityDetails,
-              dp:profilephoto,
-              testimonials:rev
-            });
+            User.findOne({username:req.body.username},function(error,singleuser){
+              reviewname=singleuser.name;
+              res.render('index',{
+                cityDetailsLists:cityDetails,
+                testimonials:rev,
+                name:reviewname,
+              });
+            })
           });
 
         });
@@ -684,6 +874,7 @@ app.post("/userToken", function(req,res){
        res.render("userBookings",{
           Details:BookedDetail,
          Status:user_status,
+         name:reviewname
        })
    }
     })

@@ -1,6 +1,1 @@
-
-
-5.) responsive
-6.) Admin username and password
-6.) temperature
-7.)filter
+1) Form Details page update

@@ -253,6 +253,13 @@ h3.right-quote {
   width: 60%;
 }
 
+.input-form-style{
+ border: 2px solid #36B5B0 ;
+ padding: 1% 2% 2%;
+ background: white;
+ margin: 5% 0%;
+}
+
 /* -----------------------------cards---------------------------------------- */
 * {
     margin: 0;

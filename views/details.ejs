@@ -29,6 +29,10 @@
           <li class="nav-item ">
             <a class="nav-link bold-text" href="/admin">Admin</a>
           </li>
+          <li>
+            <p class=" bold-text">
+              Logged In as <br> <%= name%></p>
+          </li>
 
 
         </ul>
@@ -41,8 +45,11 @@
   </nav>
   <section id="local-info">
     <form class="" action="/token" method="post" enctype="multipart/form-data" autocomplete="off">
+    <div class="input-form-style">
       <div class="row">
+        <h1>Personal Information </h1>
         <div class="col-lg-6">
+
           <div class="form-check">
             <input class="form-check-input local" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
             <label class="form-check-label" for="flexRadioDefault1">
@@ -60,7 +67,10 @@
 
         </div>
       </div>
+
+
       <div class="row ">
+
         <div class="col-lg-8">
           <label for="name" class="form-label">Name:</label>
           <input type="text" class="form-control" name="name" value="" id="name" required>
@@ -87,6 +97,24 @@
 
         </div>
         <div class="col-lg-6">
+          <label for="mobile-number" class="form-label">Mobile Number</label>
+          <input type="text" name="mobile_number" value="" class="form-control" id="mobile-number" required>
+
+
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="input-form-style">
+      <div class="row ">
+        <h1>Legal Information </h1>
+        <div class="col-lg-5">
+
           <label for="nationality" class="form-label"> Nationality</label>
           <div class="input-group">
             <span class="input-group-text"><i class="fas fa-flag"></i></span>
@@ -347,20 +375,12 @@
             </select>
             <!-- <input type="email" class="form-control" name="" value="" id="nationality"> -->
           </div>
-
-
         </div>
-
-      </div>
-      <div class="row ">
         <div class="col-lg-2">
           <label for="isd_code" class="form-label">ISD-CODE</label>
           <input type="text" class="form-control" name="isd_code" value="" id="isd-code" required>
         </div>
-        <div class="col-lg-5">
-          <label for="mobile-number" class="form-label">Mobile Number</label>
-          <input type="text" name="mobile_number" value="" class="form-control" id="mobile-number" required>
-        </div>
+
         <div class="col-lg-5 for_international">
           <label for="iqama" class="form-label">Iqama/Bataqa Number</label>
           <input type="text" name="iqama_number" value="" class="form-control" id="iqama">
@@ -395,7 +415,11 @@
         </div>
 
       </div>
+
+    </div>
+    <div class="input-form-style">
       <div class="row ">
+        <h1>Travel Details</h1>
         <div class="col-lg-3">
           <label for="adults" class="form-label"> Adults</label>
           <input type="number" class="form-control" name="adult_count" value="" id="adults" min="0" required>
@@ -436,10 +460,18 @@
             <input type="text" class="form-control" name="vcode" value="" id="vcode">
           </div>
         </div>
+
+      </div>
+
+    </div>
+
+      <div class="row">
+        <h1>Upload Documents</h1>
         <div class="col-lg-6">
           <label for="upload-file" class="form-label">Upload pdf (Scanned copies) of all documents:</label>
           <input class="form-control" type="file" name="ScannedCopies" value="" id="upload-file" required>
         </div>
+
       </div>
       <div class="row">
         <button onclick="TDate()" type="submit" name="button" class="btn btn-outline-dark submit-btn">Submit</button>
