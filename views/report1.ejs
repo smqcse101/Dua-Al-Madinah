@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 
 <head>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/admincss.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous">
+
   <meta charset="UTF-8">
+
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Create-City</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/admincss.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"> </script>
+  <title>Report 1</title>
 
 </head>
 
@@ -26,111 +28,96 @@
         </div>
       </div>
       <div class="cont">
-        <% if(success!=""){%>
-          <div class="alert alert-success alert-dismissible">
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            <strong><%=success%>!</strong>
-          </div>
-        <% } %>
 
-        <form class="" action="createCity" enctype="multipart/form-data" method="post">
-          <div class="row city-box1 ">
-            <div class="col-lg-6">
-              <div class="">
-                <label for="city_name" class="form-label headings">City Name</label>
-                <input type="text" class="form-control" name="city_name" value="" id="city_name" required>
-
-              </div>
-              <div class="">
-                <img id="city_image" width="100" height="100" />
-                <input type="file" name="cityImage" class="form-control" id="city_image" onchange="document.getElementById('city_image').src = window.URL.createObjectURL(this.files[0])" style="width:50%" required>
-
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <label for="city_description" class="form-label headings">City Description</label>
-              <textarea name="city_description" cols="40" rows="15" class="form-control" id="city_description"></textarea>
-
-            </div>
+        <div class="chart">
 
 
-          </div>
+          <canvas id="pie"></canvas>
 
-          <div class="row  city-box2 ">
-            <div class="col-lg-12">
-              <label for="latest_announcments" class="form-label headings">Latest Announcments(seperate them with "#")</label>
-              <textarea name="latest_announcments" cols="40" rows="6" class="form-control" id="latest_announcments"></textarea>
-            </div>
 
-            <div class="row city-box3">
-              <div class="row t1">
-                <div class="col-lg-6">
-                  <div class="">
-                    <label for="tour_1" class="form-label headings">Tourist Place1</label>
-                    <input type="text" class="form-control" name="tour_name1" value="" id="tour_1" required>
-                  </div>
-                  <div class="">
-                    <img id="tour_img_1" width="100" height="100" />
-                    <input type="file" class="form-control" id="tour_img1" name="tourImg1" onchange="document.getElementById('tour_img_1').src = window.URL.createObjectURL(this.files[0])" style="width:50%" required>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <label for="tour_1_description" class="form-label headings">Tourist Place 1 description</label>
-                  <textarea name="tour1description" cols="10" rows="10" class="form-control" id="tour_1_description"></textarea>
-                </div>
-              </div>
+        </div>
 
-              <div class="row t2">
-                <div class="col-lg-6">
-                  <div class="">
-                    <label for="tour_2" class="form-label headings">Tourist Place2</label>
-                    <input type="text" class="form-control" name="tour_name2" value="" id="tour_2" required>
-                  </div>
-                  <div class="">
-                    <img id="tour_img_2" width="100" height="100" />
-                    <input type="file" class="form-control" id="tour_img_2" name="tourImg2" onchange="document.getElementById('tour_img_2').src = window.URL.createObjectURL(this.files[0])" style="width:50%" required>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <label for="tour_2_description" class="form-label headings">Tourist Place 2 description</label>
-                  <textarea name="tour2description" cols="10" rows="10" class="form-control" id="tour_2_description" required></textarea>
-                </div>
 
-              </div>
-              <div class="row t3">
-                <div class="col-lg-6">
-                  <div class="">
-                    <label for="tour_3" class="form-label headings">Tourist Place3</label>
-                    <input type="text" class="form-control" name="tour_name3" value="" id="tour_3" required>
-                  </div>
-                  <div class="">
-                    <img id="tour_img_3" width="100" height="100" />
-                    <input type="file" class="form-control" id="tour_img_3" name="tourImg3" onchange="document.getElementById('tour_img_3').src = window.URL.createObjectURL(this.files[0])" style="width:50%" required>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <label for="tour_3_description" class="form-label headings">Tourist Place 3 description</label>
-                  <textarea name="tour3description" cols="10" rows="10" class="form-control" id="tour_3_description"></textarea>
-                </div>
-
-              </div>
-
-            </div>
-            <div class="row">
-              <button type="submit" name="button" class="btn btn-outline-dark submit-btn">Submit</button>
-            </div>
-
-        </form>
 
       </div>
     </div>
     <%- include('sidebar');  -%>
 
-
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="common.js"></script>
 
+
+
+    <script src="common.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let myChart = document.getElementById('pie').getContext('2d');
+
+    let massChart = new Chart(myChart, {
+
+      type: 'doughnut',
+      data: {
+
+        labels: [
+          'Red',
+          'Green',
+          'Yellow',
+          'Grey',
+          'Blue'
+        ],
+        datasets: [{
+
+          data: [11, 16, 7, 3, 14],
+          backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(75, 192, 192)',
+            'rgb(255, 205, 86)',
+            'rgb(201, 203, 207)',
+            'rgb(54, 162, 235)'
+          ],
+          borderWidth: 1,
+          borderColor: "#777",
+          hoverBorderWidth: 3,
+          hoverBorderColor: "#000"
+        }]
+      },
+
+      options: {
+        plugins: {
+
+          title: {
+            allign:'center',
+            fullSize: true,
+            display: true,
+            text: 'Number Of Bookings Per City',
+            font: {
+              size: 28
+            }
+
+          },
+
+
+          responsive: true,
+
+
+          legend: {
+
+            display: true,
+            allign: 'end',
+            position: 'left',
+          }
+        }
+
+      }
+
+
+
+
+
+
+
+
+    });
+  </script>
 </body>
 
 </html>
