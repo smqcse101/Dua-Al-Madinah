@@ -832,8 +832,20 @@ app.post("/selected-package",function(req,res){
 })
 
 
+
+
+
+
+
+
+
+
+
+
 app.post("/userToken", function(req,res){
+  console.log(req.body.giventoken);
   BookedDetails.find({tokennumber:req.body.giventoken},function(err1,BookedDetail){
+
     if(BookedDetail.length==0){
       res.sendFile(__dirname +"/wrongtoken.html")
     }
@@ -885,10 +897,14 @@ app.post("/userToken", function(req,res){
          })
      }
 
-       res.render("userBookings",{
-          Details:BookedDetail,
-         Status:user_status,
-         name:reviewname
+       Form.find({tokenNumber:req.body.giventoken},function(req,singlerowdetails){
+         res.render("userBookings",{
+            Details:BookedDetail,
+           Status:user_status,
+           name:reviewname,
+           booking_details:singlerowdetails,
+
+         })
        })
    }
     })

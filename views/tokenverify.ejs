@@ -20,97 +20,72 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/entry">
-        <img src="images/DuaAlmadinah.jpg" alt="" width="50">
-      </a>
-      <a class="navbar-brand" href="/entry">Dua-Al-Madinah</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item ">
-            <a class="nav-link bold-text" href="/Bookings">My Booking</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link bold-text" href="/admin">Admin</a>
-          </li>
-          <li>
-            <p class=" bold-text">
-              Logged In as <br> <%= name%></p>
-          </li>
+<%- include('navbar'); -%>
 
 
-        </ul>
 
 
-        <a class="btn btn-light btn-md btn-dark" href="/logout" role="button">Log-Out</a>
-
-      </div>
-    </div>
-  </nav>
+<div class="row">
 
 
-  <div class="row">
-    <div class="col-lg-8">
-      <form class="" action="userToken" method="post" autocomplete="off">
-       <div class="" style="padding:5% 10%">
-         <h1 for="token" class="form-label headings ">Enter Token number (Reference No.)</h1>
-         <input type="text" class="form-control  headings" name="giventoken" value="" id="token">
-         <button type="submit" name="button" class="btn btn-outline-dark btn-sma submit-btn ">Submit</button>
 
-         <div class="table-responsive">
-           <table class="table">
-             <thead>
-               <tr>
-                 <th scope="col">S.NO</th>
-                 <th scope="col">Booking Date</th>
-                 <th scope="col">City Selected</th>
-                 <th scope="col">Package Selected</th>
-                 <th scope="col">Token Number</th>
-               </tr>
-             </thead>
-             <tbody>
-               <%usersList.forEach(function(singleUser,index){%>
-               <tr>
-                 <th scope="row"><%=index+1%></th>
-                 <td>
-                      <label for="delete-City" class="form-label"><%=singleUser.booking_date%></label>
+  <div class="col-lg-8 table-responsive" style="padding:3% 7%;;">
 
-                 </td>
-                 <td>
-                      <label for="delete-City" class="form-label"><%=singleUser.city%></label>
+      <h2>Here You can see all your previous bookings</h2>
+      <br>
 
-                 </td>
-                 <td>
-                      <label for="delete-City" class="form-label"><%=singleUser.package%></label>
 
-                 </td>
-                 <td>
-                      <label for="delete-City" class="form-label"><%=singleUser.tokenNumber%></label>
 
-                 </td>
+    <table class="table table-bordered table-hover">
+           <thead>
+             <tr>
+               <th scope="col">S.NO</th>
+               <th scope="col">Booking Date</th>
+               <th scope="col">City Selected</th>
+               <th scope="col">Package Selected</th>
 
-               </tr>
-               <%})%>
-             </tbody>
-           </table>
+               <th scope="col">See Deatails</th>
+             </tr>
+           </thead>
+           <tbody>
+             <%usersList.forEach(function(singleUser,index){%>
+             <tr>
+               <th scope="row"><%=index+1%></th>
+               <td>
+                    <label for="delete-City" class="form-label"><%=singleUser.booking_date%></label>
 
-         </div>
+               </td>
+               <td>
+                    <label for="delete-City" class="form-label"><%=singleUser.city%></label>
 
-       </div>
+               </td>
+               <td>
+                    <label for="delete-City" class="form-label"><%=singleUser.package%></label>
 
-     </form>
-    </div>
-    <div class="col-lg-4">
-      <img src="images/tokenn.jpg" alt="" width="100%" style="padding:10%">
+               </td>
 
-    </div>
+               <td>
+                 <form class="" action="userToken" method="post" autocomplete="off">
+                 <button type="submit" name="giventoken" class="btn btn-outline-dark " value="<%=singleUser.tokenNumber%>">Status</button>
+                  </form>
+
+               </td>
+
+             </tr>
+             <%})%>
+           </tbody>
+         </table>
 
   </div>
+  <div class="col-lg-4">
+    <img src="images/tokenn.jpg" alt="" width="100%" style="padding:10%">
+
+  </div>
+
+</div>
+
+
+
 
   <%- include('footer');  -%>
 
