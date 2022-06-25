@@ -26,130 +26,129 @@
         </div>
       </div>
       <div class="cont">
-        <div class="row">
+        <h1>The following details are provided by the user.</h1>
 
-          <div class="col-lg-6">
-            <table class="table table-success table-bordered">
-              <thead>
-                <tr>
-                  <th scope="col">Sno</th>
-                  <th scope="col">Credentials</th>
-                  <th scope="col">Value</th>
+        <div class="input-form-style">
+          <h2>Personal Information</h2>
+          <div class="row">
+            <div class="col-lg-4">
+              <b>Name: </b><%=booking_details[0].name%>
 
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Name</td>
-                  <td><%=booking_details[0].name%></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Email</td>
-                  <td><%=booking_details[0].email%></td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Gender</td>
-                  <td><%=booking_details[0].gender%></td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Nationality</td>
-                  <td><%=booking_details[0].nationality%></td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>Phone.No</td>
-                  <td><%=booking_details[0].mobile_number%></td>
-                </tr>
-                <tr>
-                  <th scope="row">6</th>
-                  <td>City Selected</td>
-                  <td><%=booking_details[0].city%></td>
-                </tr>
-                <tr>
-                  <th scope="row">7</th>
-                  <td>Package Selected</td>
-                  <td><%=booking_details[0].package%></td>
-                </tr>
-                <tr>
-                  <th scope="row">8</th>
-                  <td>ISD CODE</td>
-                  <td><%=booking_details[0].isd_code%></td>
-                </tr>
-                <tr>
-                  <th scope="row">9</th>
-                  <td>Voucher Code</td>
-                  <td><%=booking_details[0].vcode%></td>
-                </tr>
-                <tr>
-                  <th scope="row">10</th>
-                  <td>Adult Count</td>
-                  <td><%=booking_details[0].adult_count%></td>
-                </tr>
-                <tr>
-                  <th scope="row">11</th>
-                  <td>Children Count</td>
-                  <td><%=booking_details[0].children_count%></td>
-                </tr>
-                <tr>
-                  <th scope="row">12</th>
-                  <td>Departure City</td>
-                  <td><%=booking_details[0].departure_city%></td>
-                </tr>
-                <tr>
-                  <th scope="row">13</th>
-                  <td>Arrival Date</td>
-                  <td><%=booking_details[0].arrival_date%></td>
-                </tr>
-                <tr>
-                  <th scope="row">14</th>
-                  <td>Departure Date</td>
-                  <td><%=booking_details[0].departure_date%></td>
-                </tr>
-                <tr>
-                  <th scope="row">15</th>
-                  <td>Iqama/Bataqa .No</td>
-                  <td><%=booking_details[0].iqama_bataqa_number%></td>
-                </tr>
-                <tr>
-                  <th scope="row">16</th>
-                  <td>Passport Number</td>
-                  <td><%=booking_details[0].passport_number%></td>
-                </tr>
-                <tr>
-                  <th scope="row">17</th>
-                  <td>Passport Issued Place</td>
-                  <td><%=booking_details[0].passport_issued_place%></td>
-                </tr>
-                <tr>
-                  <th scope="row">18</th>
-                  <td>Passport Issued On</td>
-                  <td><%=booking_details[0].passport_issued_on%></td>
-                </tr>
-                <tr>
-                  <th scope="row">19</th>
-                  <td>Passport Valid Till</td>
-                  <td><%=booking_details[0].valid_till%></td>
-                </tr>
-                <tr>
-                  <th scope="row">20</th>
-                  <td>Download Scanned Copies</td>
-                  <td>
-                    <form class="" action="/download" method="post">
-                      <input type="submit" name="download" value="<%=booking_details[0].file%>">
-                    </form>
+            </div>
+            <div class="col-lg-4">
+              <b>Email-Id: </b><%=booking_details[0].email%>
 
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            </div>
+            <div class="col-lg-4">
+              <b>Phone No :</b><%=booking_details[0].mobile_number%>
+
+            </div>
+
+
           </div>
+          <hr>
+          <div class="row">
+            <div class="col-lg-4">
+              <b>Gender :</b><%=booking_details[0].gender%>
+
+            </div>
+            <div class="col-lg-4">
+              <b>Local Tourist :</b><%=booking_details[0].is_local%>
+
+            </div>
+
+          </div>
+
+
+
+        </div>
+        <div class="input-form-style">
+          <h2>Legal Information</h2>
+          <div class="row">
+            <div class="col-lg-3">
+              <b>Nationality: </b> <%=booking_details[0].nationality%>
+
+            </div>
+            <div class="col-lg-3">
+              <b>Iqama/Bataqa No: </b> <%=booking_details[0].iqama_bataqa_number%>
+
+            </div>
+            <div class="col-lg-3">
+              <b>Passport No: </b> <%=booking_details[0].passport_number%>
+
+            </div>
+            <div class="col-lg-3">
+              <b>Isd Code: </b> <%=booking_details[0].isd_code%>
+
+            </div>
+
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-lg-3">
+              <b>Issued Place: </b> <%=booking_details[0].passport_issued_place%>
+            </div>
+            <div class="col-lg-3">
+              <b>Issued On: </b> <%=booking_details[0].passport_issued_on%>
+            </div>
+            <div class="col-lg-3">
+              <b>Valid Till</b> <%=booking_details[0].valid_till%>
+
+            </div>
+
+          </div>
+
+        </div>
+        <div class="input-form-style">
+          <h2>Travel Details</h2>
+          <div class="row">
+            <div class="col-lg-3">
+              <b>Adult Count: </b> <%=booking_details[0].adult_count%>
+
+            </div>
+            <div class="col-lg-3">
+              <b>Children Count: </b> <%=booking_details[0].children_count%>
+
+            </div>
+            <div class="col-lg-3">
+              <b>Departure City: </b> <%=booking_details[0].departure_city%>
+
+            </div>
+            <div class="col-lg-3">
+              <b>Voucher Code: </b> <%=booking_details[0].vcode%>
+
+            </div>
+
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-lg-4">
+              <b>Departure Date & Time: </b> <%=booking_details[0].departure_date%>
+            </div>
+            <div class="col-lg-4">
+              <b>Arrival Date & time: </b> <%=booking_details[0].arrival_date%>
+            </div>
+
+
+          </div>
+
+        </div>
+        <div class="input-form-style">
+          <h2>Documnets PDF</h2>
+          <form class="" action="/download" method="post">
+            <input type="submit" name="download" value="<%=booking_details[0].file%>">
+          </form>
+
+
+        </div>
+
+        <div class="row">
+          <h1>Provide Details For This User</h1>
+
+
           <div class="col-lg-6">
             <form class="" action="bookedForYouDetails" method="post" autocomplete="off">
-              <h1>Provide Details For This User</h1>
+
               <input type="hidden" name="name" value="<%=booking_details[0].name%>">
               <input type="hidden" name="emailid" value="<%=booking_details[0].email%>">
               <input type="hidden" name="city" value="<%=booking_details[0].city%>">
@@ -169,21 +168,13 @@
                 </select>
 
               </div>
-              <div class="bookedDetails">
-                <label for="FlightName" class="form-label headings">Airlines/Flight Name</label>
-                <input type="text" class="form-control" name="flightName" value="" id="FlightName" placeholder="<%=BookedDetail[0].airlines%>">
 
-              </div>
               <div class="bookedDetails">
                 <label for="FlightDepartureDate" class="form-label headings">Flight Departure Date</label>
                 <input type="text" class="form-control" name="flightDepartureDate" value="" id="FlightDepartureDate" placeholder="<%=BookedDetail[0].flightDepartureDate%>" onfocus="(this.type='date')">
 
               </div>
-              <div class="bookedDetails">
-                <label for="FlightDepartureTime" class="form-label headings">Flight Departure Time</label>
-                <input type="text" class="form-control" name="flightDepartureTime" value="" id="FlightDepartureTime" placeholder="<%=BookedDetail[0].flightDepartureTime%>" onfocus="(this.type='time')">
 
-              </div>
               <div class="bookedDetails">
                 <label for="FlightArrivalDate" class="form-label headings">Flight Arrival Date</label>
                 <input type="text" class="form-control" name="flightArrivalDate" value="" id="FlightArrivalDate" placeholder="<%=BookedDetail[0].flightArrivalDate%>" onfocus="(this.type='date')">
@@ -194,41 +185,62 @@
                 <input type="text" class="form-control" name="flightArrivalTime" value="" id="FlightArrivalTime" placeholder="<%=BookedDetail[0].flightArrivalTime%>" onfocus="(this.type='time')">
 
               </div>
-              <div class="bookedDetails">
-                <label for="PNR" class="form-label headings">PNR NUmber</label>
-                <input type="text" class="form-control" name="pnr" value="" id="PNR" placeholder="<%=BookedDetail[0].PNRnumber%>">
 
-              </div>
-              <div class="bookedDetails">
-                <label for="TicketNumber" class="form-label headings">Ticket Number</label>
-                <input type="text" class="form-control" name="ticketNumber" value="" id="TicketNumber" placeholder="<%=BookedDetail[0].ticketnumber%>">
-              </div>
-              <div class="bookedDetails">
-                <label for="AllotedHotelLocation" class="form-label headings">Alloted Hotel Location</label>
-                <input type="text" class="form-control" name="allotedHotelLocation" value="" id="AllotedHotelLocation" placeholder="<%=BookedDetail[0].hotellocation%>">
-              </div>
               <div class="bookedDetails">
                 <label for="AllotedHotelName" class="form-label headings">Alloted Hotel Name</label>
                 <input type="text" class="form-control" name="allotedHotelName" value="" id="AllotedHotelName" placeholder="<%=BookedDetail[0].hotelname%>">
               </div>
-              <div class="bookedDetails">
-                <label for="RoomNumber(s)" class="form-label headings">Room Number(s)</label>
-                <input type="text" class="form-control" name="roomNumber" value="" id="RoomNumber(s)" placeholder="<%=BookedDetail[0].Roomnumber%>">
-              </div>
+
               <div class="bookedDetails">
                 <label for="CheckInDate" class="form-label headings">Check-In-Date</label>
                 <input type="text" class="form-control" name="checkInDate" value="" id="CheckInDate" placeholder="<%=BookedDetail[0].checkinDate%>" onfocus="(this.type='date')">
               </div>
+
               <div class="bookedDetails">
-                <label for="CheckOutDate" class="form-label headings">Check-Out-Date</label>
-                <input type="text" class="form-control" name="checkOutDate" value="" id="CheckOutDate" placeholder="<%=BookedDetail[0].checkoutdate%>" onfocus="(this.type='date')">
+                <label for="RoomNumber(s)" class="form-label headings">Room Number(s)</label>
+                <input type="text" class="form-control" name="roomNumber" value="" id="RoomNumber(s)" placeholder="<%=BookedDetail[0].Roomnumber%>">
               </div>
               <button type="submit" name="button" class="btn submit-btn">Submit</button>
             </form>
           </div>
+
+          <div class="col-lg-6">
+            <div class="bookedDetails">
+              <label for="FlightName" class="form-label headings">Airlines/Flight Name</label>
+              <input type="text" class="form-control" name="flightName" value="" id="FlightName" placeholder="<%=BookedDetail[0].airlines%>">
+
+            </div>
+            <div class="bookedDetails">
+              <label for="FlightDepartureTime" class="form-label headings">Flight Departure Time</label>
+              <input type="text" class="form-control" name="flightDepartureTime" value="" id="FlightDepartureTime" placeholder="<%=BookedDetail[0].flightDepartureTime%>" onfocus="(this.type='time')">
+
+            </div>
+            <div class="bookedDetails">
+              <label for="PNR" class="form-label headings">PNR NUmber</label>
+              <input type="text" class="form-control" name="pnr" value="" id="PNR" placeholder="<%=BookedDetail[0].PNRnumber%>">
+
+            </div>
+            <div class="bookedDetails">
+              <label for="TicketNumber" class="form-label headings">Ticket Number</label>
+              <input type="text" class="form-control" name="ticketNumber" value="" id="TicketNumber" placeholder="<%=BookedDetail[0].ticketnumber%>">
+            </div>
+            <div class="bookedDetails">
+              <label for="AllotedHotelLocation" class="form-label headings">Alloted Hotel Location</label>
+              <input type="text" class="form-control" name="allotedHotelLocation" value="" id="AllotedHotelLocation" placeholder="<%=BookedDetail[0].hotellocation%>">
+            </div>
+            <div class="bookedDetails">
+              <label for="CheckOutDate" class="form-label headings">Check-Out-Date</label>
+              <input type="text" class="form-control" name="checkOutDate" value="" id="CheckOutDate" placeholder="<%=BookedDetail[0].checkoutdate%>" onfocus="(this.type='date')">
+            </div>
+
+          </div>
         </div>
+
+
       </div>
     </div>
+
+
     <%- include('sidebar');  -%>
 
   </div>

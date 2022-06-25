@@ -156,7 +156,7 @@ const formSchema = new mongoose.Schema({
   dp:String,
   city:String,
   package:String,
-  booking_date:Date,
+  booking_date:String,
   time:String,
   is_local: String,
   name:String,
@@ -168,13 +168,13 @@ const formSchema = new mongoose.Schema({
   iqama_bataqa_number:String,
   passport_number:String,
   passport_issued_place:String,
-  passport_issued_on:Date,
-  valid_till: Date,
+  passport_issued_on:String,
+  valid_till: String,
   adult_count: Number,
   children_count:Number,
   departure_city:String,
-  arrival_date:Date,
-  departure_date:Date,
+  arrival_date:String,
+  departure_date:String,
   vcode: String,
   file:String,
   Status:String,
@@ -219,10 +219,19 @@ app.post("/token" ,upload.single("ScannedCopies"),function(req, res){
   var minutes = date_ob.getMinutes();
   var seconds = date_ob.getSeconds();
 
-  var day = ("0" + date_ob.getDate()).slice(-2);
-  var month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
-  var year = date_ob.getFullYear();
-  var date1 = year + "-" + month + "-" + day;
+  let today = new Date().toISOString().slice(0, 10)
+  let to= new Date();
+  const weekday = ["Sunday -","Monday -","Tuesday -","Wednesday -","Thursday -","Friday -","Saturday -"];
+
+  let day = weekday[to.getDay()];
+
+
+
+ var date1= day + today;
+
+
+
+
   var time= hours + ":" + minutes + ":" + seconds;
 
 
@@ -334,13 +343,12 @@ app.get("/city", function(req,res){
 
 
 })
-app.get("/adminHome",function(req,res){
-  res.render("Admin.ejs");
 
-})
 app.get("/admin", function(req,res){
-  res.sendFile(__dirname+"/adminLogin.html");
+  res.render("adminLogin",{name:reviewname});
 })
+
+
 app.get("/request",function(req,res){
 
 
@@ -736,7 +744,13 @@ app.get("/popupDeletePackage",function(req,res){
 
 app.post("/adminlogin",function(req,res){
   if((req.body.adminUsername==process.env.USER_NAME)&&(req.body.adminPassword==process.env.PASS_WORD)){
-    res.render("Admin.ejs")
+    CityDetails.find({},function(err,cityDetails){
+      res.render('queryRequest',{
+        cityDetailsLists:cityDetails,
+        booking_details:"",
+
+      })
+    })
   }
   else{
     console.log("unauthentication access");

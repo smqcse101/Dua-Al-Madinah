@@ -613,3 +613,9 @@ nav .container-fluid{
 .gmail:hover{
   color: black;
 }
+.footer-box{
+  background-color: pink;
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+}

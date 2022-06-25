@@ -20,38 +20,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/entry">
-        <img src="images/DuaAlmadinah.jpg" alt="" width="50">
-      </a>
-      <a class="navbar-brand" href="/entry">Dua-Al-Madinah</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item ">
-            <a class="nav-link bold-text" href="/Bookings">My Booking</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link bold-text" href="/admin">Admin</a>
-          </li>
-          <li>
-            <p class=" bold-text">
-              Logged In as <br> <%= name%></p>
-          </li>
-
-
-        </ul>
-
-
-        <a class="btn btn-light btn-md btn-dark" href="/logout" role="button">Log-Out</a>
-
-      </div>
-    </div>
-  </nav>
+  <%- include('navbar');  -%>
   <h1 class="about-us-heading">ABOUT US</h1>
   <section id="AboutUSInfo">
     <div class="row">
@@ -76,86 +45,7 @@
 
 
 
-  <footer style="text-align:center;">
-    <div >
-
-
-
-
-
-          <div class="row mt-4">
-
-            <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
-              <a href="/aboutus"><h3 class="text-uppercase mb-4">About Us</h3></a>
-
-
-
-                “Duaa al Madinah ." Is founded in 2020, started by very young personalities to dedicate their
-                life spending time on doing assistance...<a href="/aboutus"><span class="see-more">see more</span> </a>
-
-
-
-              <div class="mt-4">
-
-                <a type="button" class="btn btn-floating btn-warning btn-lg btn-dark"><i class="fab fa-facebook-f"></i></a>
-
-
-
-                <a type="button" class="btn btn-floating btn-warning btn-lg btn-dark"><i class="fab fa-instagram"></i></a>
-
-                <a type="button" class="btn btn-floating btn-warning btn-lg btn-dark"><i class="fab fa-google-plus-g"></i></a>
-                <!-- Linkedin -->
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-              <h3>Resources</h3>
-
-
-                  <h6>Blogs</h6>
-
-
-                  <h6>FAQs</h6>
-
-
-                  <h6>Our Works</h6>
-
-
-
-
-
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-              <a href="/contactUs"><h3 class="text-uppercase mb-4">Contact Us</h3></a>
-              <ul class="fa-ul" style="margin-left: 1.65em; text-align:left;" >
-                <li class="mb-3">
-                  <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-1">  King Fahad street Al Masaniah District 3228 Madinah Al Munawarah KSA</span>
-                </li>
-                <li class="mb-3">
-                    <a href="/contactUs"><span class="fa-li"><i class="fas fa-envelope gmail"></i></span><span class="ms-1 gmail">duaalmadinah2022@gmail.com</span></a>
-                </li>
-                <li class="mb-3">
-                  <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-1">+91 98749563264</span>
-                </li>
-
-              </ul>
-
-
-            </div>
-
-          </div>
-
-
-
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-          © 2022 Copyright:
-          <a class="text-white">Dua Al-Madinah</a>
-        </div>
-
-
-    </div>
-  </footer>
+  <%- include('footer');  -%>
 
 
   <script src="cityname.js">

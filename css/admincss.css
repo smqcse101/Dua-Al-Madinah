@@ -13,6 +13,13 @@ body{
 background: #f5f6fa;
 }
 
+.input-form-style{
+ border: 2px solid #36B5B0 ;
+ padding: 1% 1% 2%;
+ background: #FAF0D7;
+ margin: 5% 0%;
+}
+
 .wrap .sbar{
 background: #219F94;
 position: fixed;
@@ -66,6 +73,9 @@ margin: 10px 0 5px;
 .wrap .sbar .profile p{
 color: rgb(206, 240, 253);
 font-size: 14px;
+}
+hr{
+  margin: 2% 0%;
 }
 
 .wrap .sbar ul li a{
@@ -185,6 +195,7 @@ img#package_img {
   width: 300px;
 }
 .city-box1{
+  margin-bottom: 3%;
 
 }
 .city-box2{

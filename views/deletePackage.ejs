@@ -32,35 +32,38 @@
           </div>
         <% } %>
         <form class="" action="delete-package" method="post">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">S.NO</th>
-                <th scope="col">City Name</th>
-                <th scope="col">Package Name</th>
-                <th scope="col">Package Type</th>
-                <th scope="col">Delete Package</th>
-              </tr>
-            </thead>
-            <tbody>
-              <%packageDetails.forEach(function(packageDetail,index){%>
-              <tr>
-                <th scope="row"><%=index+1%></th>
-                <td>
-                  <label for="" class="form-label"><%=packageDetail.packageCity%></label>
-                </td>
-                <td>
-                  <label for="" class="form-label"><%=packageDetail.packageName%></label>
-                </td>
-                <td>
-                  <label for="" class="form-label"><%=packageDetail.packageType%></label>
-                </td>
+         <div class="table-responsive">
+           <table class="table">
+             <thead>
+               <tr>
+                 <th scope="col">S.NO</th>
+                 <th scope="col">City Name</th>
+                 <th scope="col">Package Name</th>
+                 <th scope="col">Package Type</th>
+                 <th scope="col">Delete Package</th>
+               </tr>
+             </thead>
+             <tbody>
+               <%packageDetails.forEach(function(packageDetail,index){%>
+               <tr>
+                 <th scope="row"><%=index+1%></th>
+                 <td>
+                   <label for="" class="form-label"><%=packageDetail.packageCity%></label>
+                 </td>
+                 <td>
+                   <label for="" class="form-label"><%=packageDetail.packageName%></label>
+                 </td>
+                 <td>
+                   <label for="" class="form-label"><%=packageDetail.packageType%></label>
+                 </td>
 
-              <td><button type="submit"   name="todeletePackageID" value="<%=packageDetail.packageid%>" class="btn btn-outline-dark submit-btn">Drop Package</button></td>
-              </tr>
-              <%})%>
-            </tbody>
-          </table>
+               <td><button type="submit"   name="todeletePackageID" value="<%=packageDetail.packageid%>" class="btn btn-outline-dark submit-btn">Drop Package</button></td>
+               </tr>
+               <%})%>
+             </tbody>
+           </table>
+
+         </div>
         </form>
 
       </div>

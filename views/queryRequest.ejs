@@ -30,6 +30,9 @@
         <form class="" action="queryRequest" method="post">
           <div class="row city-box1 ">
 
+            <h4>Fillter the Customer requests based on the below parameters.</h4>
+            <hr>
+
             <div class="col-lg-4">
               <label for="city" class="form-label headings">Select a City</label>
               <select name="selectCity" class="form-select">
@@ -54,6 +57,7 @@
                   <option value="On-Hold By Office">On-Hold By Office</option>
                   <option value="Tour Cancelled">Tour Cancelled</option>
                   <option value="Request Closed">Request Closed</option>
+
                 </select>
 
               </div>
@@ -73,7 +77,7 @@
 
 
           </div>
-          <div class="row">
+          <div class="row city-box1" >
             <button type="submit" name="button" class="btn btn-outline-dark  submit-btn">Submit</button>
           </div>
 
@@ -81,37 +85,65 @@
 
         </form>
 
+        <% if (booking_details!="") { %>
+
+
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">S.NO</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Request Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">City Selected</th>
+                    <th scope="col">See Details</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <%booking_details.forEach(function(booking_detail,index){%>
+                  <tr>
+                    <th scope="row"><%=index+1%></th>
+                    <td>
+                         <label for="name" class="form-label"><%=booking_detail.name%></label>
+
+                    </td>
+                    <td>
+                         <label for="date" class="form-label"><%=booking_detail.booking_date%></label>
+
+                    </td>
+                    <td>
+                         <label for="status" class="form-label"><%=booking_detail.Status%></label>
+
+                    </td>
+                    <td>
+                         <label for="city" class="form-label"><%=booking_detail.city%></label>
+
+                    </td>
+                    <td>
+                         
+                         <form class="" action="/handleuser" method="post">
+                           <button class="btn btn-outline-dark bttn" type="submit" name="email" value="<%=booking_detail.email%>">Know User</button>
+                         </form>
+
+                    </td>
+
+                  </tr>
+                  <%})%>
+                </tbody>
+
+              </table>
+
+            </div>
+
+
+
+        <% } %>
+
       </div>
-      <% if (booking_details!="") { %>
 
-        <%booking_details.forEach(function(booking_detail){%>
-        <div class="cards">
-          <div class="row">
-
-            <div class="col-lg-2 ">
-              <% if(booking_detail.dp===" "){%>
-              <img class="user-img" src="images/profile.png" alt="user has No Dp">
-              <% } else { %>
-              <img class="user-img" src="<%=booking_detail.dp%>" alt="user has No Dp">
-              <% } %>
-
-            </div>
-            <div class="col-lg-7 user-name-time">
-              <h2><%=booking_detail.name%></h2>
-              <h3>Request Date : <%=booking_detail.booking_date%> </h3>
-              <h3>Requested Time : <%=booking_detail.time%></h3>
-              <h3>Status:<%=booking_detail.Status%></h3>
-            </div>
-            <div class="col-lg-3 see-details-button">
-              <form class="" action="/handleuser" method="post">
-                <button class="btn btn-outline-dark btn-lg bttn" type="submit" name="email" value="<%=booking_detail.email%>">See Details</button>
-              </form>
-            </div>
-          </div>
-        </div>
-        <%})%>
-
-      <% } %>
 
     </div>
     <%- include('sidebar');  -%>

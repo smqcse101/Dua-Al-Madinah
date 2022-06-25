@@ -18,34 +18,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/entry">
-        <img src="images/DuaAlmadinah.jpg" alt="" width="50">
-      </a>
-      <a class="navbar-brand" href="/entry">Dua-Al-Madinah</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item ">
-            <a class="nav-link bold-text" href="/Bookings">My Booking</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link bold-text" href="/admin">Admin</a>
-          </li>
-          <li>
-            <p class=" bold-text">
-              Logged In as <br> <%= name%></p>
-          </li>
-
-
-        </ul>
-    <a class="btn btn-light btn-md btn-dark" href="/logout" role="button">Log-Out</a>
-      </div>
-    </div>
-  </nav>
+  <%- include('navbar');  -%>
 
   <div>
     <% if (Status === "Tour Confirmed") { %>
