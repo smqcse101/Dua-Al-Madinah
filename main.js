@@ -11,7 +11,11 @@ const passport=require("passport");
 const app = express();
 const passportLocalMongoose= require("passport-local-mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+
 const randomstring = require("random-string-gen");
+
+
 const findOrCreate = require('mongoose-findorcreate');
 const fs = require('fs');
 const PDFDocument = require('pdfkit');
@@ -94,7 +98,7 @@ passport.use(new GoogleStrategy({
     clientSecret: process.env.CLIENT_SECRET,
 
     callbackURL: "https://hidden-mesa-15600.herokuapp.com/auth/google/login",
-    // callbackURL: "http://localhost:3000/auth/google/login",
+    callbackURL: "http://localhost:3000/auth/google/login",
     userProfileUrl:"https://www.googleapis.com/oauth2/v3/userinfo"
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -108,7 +112,7 @@ passport.use(new GoogleStrategy({
   });
 }
 ));
-var randomtoken=randomstring({length:10,type:"alphanumeric"});
+
 
 var selectedCity;
  var xcoordinate;
@@ -212,7 +216,17 @@ const cityDetailsSchema = new mongoose.Schema({
 });
 const CityDetails=mongoose.model("CityDetails",cityDetailsSchema);
 
+var randomtoken;
+
+
 app.post("/token" ,upload.single("ScannedCopies"),function(req, res){
+
+
+
+
+   randomtoken=randomstring({length:10,type:"alphanumeric"});
+
+     console.log(randomtoken);
 
   var date_ob = new Date();
   var hours = date_ob.getHours();
@@ -263,6 +277,22 @@ app.post("/token" ,upload.single("ScannedCopies"),function(req, res){
     file:req.file.filename,
     Status:"Under Processing",
     tokenNumber:randomtoken,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   });
   new_form.save();
    const initial_data = new BookedDetails({
@@ -583,7 +613,7 @@ app.post("/bookedForYouDetails",function(req,res){
 app.get("/Bookings",function(req,res){
 
   Form.find({entry_email:entryEmail},function(err,founduser){
-    res.render("tokenverify",{
+    res.render("mybookings",{
       usersList:founduser,
       name:reviewname,
     })
@@ -622,7 +652,7 @@ app.get("/entry",function(req, res) {
 
 })
 app.get("/details",function(req,res){
-  res.render("details",{
+  res.render("bookingForm",{
     name:reviewname
   });
 })
@@ -842,7 +872,7 @@ app.post("/selected-package",function(req,res){
 
 
 
-app.post("/userToken", function(req,res){
+app.post("/seeStatus", function(req,res){
   console.log(req.body.giventoken);
   BookedDetails.find({tokennumber:req.body.giventoken},function(err1,BookedDetail){
 
@@ -898,7 +928,7 @@ app.post("/userToken", function(req,res){
      }
 
        Form.find({tokenNumber:req.body.giventoken},function(req,singlerowdetails){
-         res.render("userBookings",{
+         res.render("individualBookingDetails",{
             Details:BookedDetail,
            Status:user_status,
            name:reviewname,
