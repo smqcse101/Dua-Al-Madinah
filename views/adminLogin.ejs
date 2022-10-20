@@ -25,7 +25,7 @@
       <div class="wrapper">
 
         <div class="title"><span>Admin Login</span></div>
-        <form action="adminlogin" method="post"  enctype="multipart/form-data" autocomplete="off" >
+        <form action="adminlogin" method="post"   autocomplete="off" >
           <div class="row">
             <i class="fas fa-user"></i>
             <input type="text" placeholder="Username" name="adminUsername" required>
@@ -36,7 +36,8 @@
           </div>
 
           <div class="row button">
-            <input type="submit" value="Login">
+            <button type="submit" name="button" class="btn btn-outline-dark submit-btn">Login</button>
+            <!-- <input type="submit" value="Login"> -->
           </div>
           <div class="signup-link">Only Admins Can Access Further Pages</div>
         </form>
