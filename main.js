@@ -97,8 +97,8 @@ passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
 
-    callbackURL: "https://hidden-mesa-15600.herokuapp.com/auth/google/login",
-    // callbackURL: "http://localhost:4000/auth/google/login",
+    // callbackURL: "https://hidden-mesa-15600.herokuapp.com/auth/google/login",
+    callbackURL: "http://localhost:3000/auth/google/login",
     userProfileUrl:"https://www.googleapis.com/oauth2/v3/userinfo"
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -122,7 +122,7 @@ var user_status;
 var temperature;
 var description;
 var image_url;
-var multipleUpload=upload.fields([{name:"cityImage",maxCount:1},{name:"tourImg1",maxCount:1},{name:"tourImg2",maxCount:1},{name:"tourImg3",maxCount:1}]);
+ var multipleUpload=upload.fields([{name:"cityImage",maxCount:1},{name:"tourImg1",maxCount:1},{name:"tourImg2",maxCount:1},{name:"tourImg3",maxCount:1}]);
 
 const reviewSchema= new mongoose.Schema({
   review:String,
@@ -218,11 +218,7 @@ const CityDetails=mongoose.model("CityDetails",cityDetailsSchema);
 
 var randomtoken;
 
-
 app.post("/token" ,upload.single("ScannedCopies"),function(req, res){
-
-
-
 
    randomtoken=randomstring({length:10,type:"alphanumeric"});
 
@@ -242,11 +238,7 @@ app.post("/token" ,upload.single("ScannedCopies"),function(req, res){
 
 
  var date1= day + today;
-
-
-
-
-  var time= hours + ":" + minutes + ":" + seconds;
+ var time= hours + ":" + minutes + ":" + seconds;
 
 
   const new_form= new Form ({
@@ -277,22 +269,6 @@ app.post("/token" ,upload.single("ScannedCopies"),function(req, res){
     file:req.file.filename,
     Status:"Under Processing",
     tokenNumber:randomtoken,
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   });
   new_form.save();
    const initial_data = new BookedDetails({
@@ -316,8 +292,8 @@ app.get("/", function(req, res) {
   res.sendFile(__dirname+"/login.html")
 })
 let port =process.env.PORT;
-if(port== null ||  port == ""){
-  port =4000;
+if(port == null ||  port == ""){
+  port = 3000;
 }
 
 app.listen(port, function() {
@@ -472,75 +448,6 @@ app.get("/report5",function(req,res){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 app.get("/createPackage",function(req,res){
   CityDetails.find({},function(err,cityDetails){
     res.render('create_package',{
@@ -621,9 +528,6 @@ app.get("/Bookings",function(req,res){
 
 
   })
-
-
-
 
  // res.sendFile(__dirname+"/tokenverify.html");
 })
@@ -861,15 +765,6 @@ app.post("/selected-package",function(req,res){
   selectedPackage=req.body.SelectedPackage;
   res.redirect("/details");
 })
-
-
-
-
-
-
-
-
-
 
 
 
