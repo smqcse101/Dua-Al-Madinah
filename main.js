@@ -1,3 +1,4 @@
+//haha
 require('dotenv').config();
 const session= require("express-session");
 const express = require("express");
@@ -97,8 +98,8 @@ passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
 
-    callbackURL: "https://calm-lime-cockroach-robe.cyclic.app/auth/google/login",
-    // callbackURL: "http://localhost:3000/auth/google/login",
+    
+    callbackURL: "http://localhost:3000/auth/google/login",
     userProfileUrl:"https://www.googleapis.com/oauth2/v3/userinfo"
   },
   function(accessToken, refreshToken, profile, cb) {
