@@ -26,19 +26,12 @@
     <h1 class="heading">About <%=selectedCity[0].cityName%></h1>
     <!-- <div id="map" style="width:auto;height:450px;"></div> -->
     <div class="row">
-      <div class="col-lg-6 col-md-6" style="background-color:#A1E3D8 ; border: 2px solid #446A46 ">
-        <h2>Latest Announcements</h2>
-        <ul>
-          <%selectedCity[0].latestAnnouncments.forEach(function(latestAnnouncment){%>
-          <li><%=latestAnnouncment%></li>
-          <%})%>
-        </ul>
-      </div>
-      <div class="col-lg-6 col-md-6" style="background-color:#A1E3D8 ; border: 2px solid #446A46">
+
+      <div class="col-lg-12 col-md-12" style="background-color:#FAEDF0">
         <div class="row">
           <div class="col-sm-4">
-            <img src="<%=image_url%>" alt="">
-            <h5><%=description%></h5>
+            <img style="margin-left: 20%;background-color: #FFE2E2;margin-bottom: 20px;" src="<%=image_url%>" alt="">
+            <h5 style="margin-left: 20%;text-transform: capitalize;font-weight: 300;"><%=description%></h5>
           </div>
           <div class="col-sm-8">
             <h3 style="margin-top:30px;"><%=temperature%>°C</h3>
@@ -117,6 +110,19 @@
       <%})%>
     </div>
   </section>
+
+  <div class="row" style="background-color: #FAEDF0;">
+    <div class="col-lg-12 col-md-12">
+      <h2 class="heading ; text-align:center">Latest Announcements</h2>
+      <ul>
+        <%selectedCity[0].latestAnnouncments.forEach(function(latestAnnouncment){%>
+        <h4 style="color: grey;"><%=latestAnnouncment%></h4>
+        <%})%>
+      </ul>
+    </div>
+  </div>
+  <br>
+  <br>
   <%- include('footer');  -%>
 
   <script type="text/javascript">
