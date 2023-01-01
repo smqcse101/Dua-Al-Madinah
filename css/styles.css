@@ -429,7 +429,7 @@ a:hover {
 } */
 #about-city{
   text-align: left;
-  background-color:#DEEDF0;
+  background-color:#FAEDF0;
   padding: 2%;
 }
 
@@ -626,3 +626,8 @@ nav .container-fluid{
   height: 100px;
   margin: 20px;
 }
+
+/* ///// Navbar Title???? */
+/* .navbar_title_new{
+  color: white;
+} */
