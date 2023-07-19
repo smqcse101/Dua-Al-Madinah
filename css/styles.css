@@ -46,18 +46,27 @@ p{
 }
 
 .right-quote{
+  
   font-size: 180%;
  text-align: left;
  margin: auto;
  line-height: 2;
  color:grey;
+
 }
-h3.right-quote {
+h2.right-quote {
   font-size: 220%;
- text-align: center;
+ text-align: left;
  margin: auto;
  line-height: 2;
  color:black;
+}
+.guide-text{
+  font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica",
+      "Arial", sans-serif; 
+    font-style: normal;
+  
+  
 }
 
 
